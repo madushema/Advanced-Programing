@@ -30,7 +30,7 @@
 		                <img src="assert/online-shopping.png" width="25" height="25" alt="" srcset="">
 		                <img src="assert/heart.png" width="25" height="25" alt="" srcset="">
 		                <img src="assert/user.png" width="25" height="25" alt="" srcset="">
-		                <p id="u_name">Ruvidu</p>
+		                <p id="u_name">Madhushan Dhammika</p>
 		                <a href="logout.jsp">Logout</a>
 		            </div>
 		        </div>
