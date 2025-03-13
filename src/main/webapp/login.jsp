@@ -323,26 +323,72 @@ body {
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <!-- Custom JS -->
     <script>
-        $(document).ready(function () {
-            const response = $("#Response").val();
-            if (response === "success") {
+    $(document).ready(function () {
+        const response = $("#Response").val();
+        
+        // Success or failure response handling
+        if (response === "success") {
+            Swal.fire({
+                title: "Success!",
+                text: "You have successfully logged in.",
+                icon: "success",
+                confirmButtonColor: "#3085d6",
+            }).then(() => {
+                window.location.href = "index.jsp"; // Redirect after success
+            });
+        } else if (response === "failed") {
+            Swal.fire({
+                title: "Error!",
+                text: "Invalid username or password.",
+                icon: "error",
+                confirmButtonColor: "#d33",
+            });
+        }
+
+        // Validate the form before submitting
+        $("#loginForm").submit(function (event) {
+            const username = $("#username").val().trim();
+            const password = $("#password").val().trim();
+
+            // Validate username and password
+            if (username === "") {
                 Swal.fire({
-                    title: "Success!",
-                    text: "You have successfully logged in.",
-                    icon: "success",
-                    confirmButtonColor: "#3085d6",
-                }).then(() => {
-                    window.location.href = "index.jsp"; // Redirect after success
-                });
-            } else if (response === "failed") {
-                Swal.fire({
-                    title: "Error!",
-                    text: "Invalid username or password.",
+                    title: "Validation Error!",
+                    text: "Username cannot be empty.",
                     icon: "error",
                     confirmButtonColor: "#d33",
                 });
+                event.preventDefault(); // Prevent form submission
+                return false;
             }
+
+            if (password === "") {
+                Swal.fire({
+                    title: "Validation Error!",
+                    text: "Password cannot be empty.",
+                    icon: "error",
+                    confirmButtonColor: "#d33",
+                });
+                event.preventDefault(); // Prevent form submission
+                return false;
+            }
+
+            if (password.length < 6) {
+                Swal.fire({
+                    title: "Validation Error!",
+                    text: "Password must be at least 6 characters long.",
+                    icon: "error",
+                    confirmButtonColor: "#d33",
+                });
+                event.preventDefault(); // Prevent form submission
+                return false;
+            }
+
+            // Allow form submission if all validations pass
+            return true;
         });
-    </script>
+    });
+</script>
+
 </body>
 </html>
