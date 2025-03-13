@@ -10,3 +10,4 @@ public class VehicleService {
         return vehicleRepo.addVehicle(vehicle);
     }
 }
+       

@@ -43,3 +43,4 @@ public class VehicleModel {
     public byte[] getVehicleImage() { return vehicleImage; }
     public void setVehicleImage(byte[] vehicleImage) { this.vehicleImage = vehicleImage; }
 }
+      
