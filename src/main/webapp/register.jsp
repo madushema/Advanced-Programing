@@ -307,7 +307,20 @@ body {
         <div class="page_body_main_wrapper">
             <div class="body_content">
                 <div class="left_warpper">
-                    <form action="Register" method="post">
+                
+                <!-- Display error messages -->
+			        <% 
+			            String errorMessages = (String) request.getAttribute("errorMessages");
+			            if (errorMessages != null) {
+			        %>
+			            <div class="alert alert-danger">
+			                <%= errorMessages %>
+			            </div>
+			        <% 
+			            }
+			        %>
+                
+                    <form action="register" method="post">
                         <h2>Create Your Account</h2>
                         <p>Fill your details below</p>
                         <div class="left_warpper_user_input">
